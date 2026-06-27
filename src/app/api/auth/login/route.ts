@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
 
     return response;
   } catch (err) {
+    console.error("Erreur lors de la tentative de login:", err);
     return NextResponse.json(
       { message: "Identifiants invalides" },
       { status: 401 }
