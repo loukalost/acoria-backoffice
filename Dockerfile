@@ -1,19 +1,40 @@
 ARG NODE_VERSION=24.13.0-slim
 
-FROM node:${NODE_VERSION} AS builder
+# ============================================
+# Stage 1: Dependencies Installation Stage
+# ============================================
+FROM node:${NODE_VERSION} AS dependencies
+
 WORKDIR /app
+
+COPY package.json package-lock.json* ./
+
+RUN --mount=type=cache,target=/root/.npm \
+    npm ci --no-audit --no-fund
+
+# ============================================
+# Stage 2: Build Next.js application in standalone mode
+# ============================================
+FROM node:${NODE_VERSION} AS builder
+
+WORKDIR /app
+
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
+
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-# Ajout : rendre l'URL de l'API disponible au moment du build
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 RUN npm run build
 
+# ============================================
+# Stage 3: Run Next.js application
+# ============================================
 FROM node:${NODE_VERSION} AS runner
+
 WORKDIR /app
 
 RUN apt-get update \
