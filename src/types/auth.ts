@@ -10,6 +10,14 @@ export interface LoginPayload {
   password: string;
 }
 
+export interface RegisterPayload {
+  prenom: string;
+  nom: string;
+  email: string;
+  role: "PATIENT" | "THERAPEUTE";
+  password: string;
+}
+
 export interface AuthTokens {
   accessToken: string;
   refreshToken: string;

@@ -26,7 +26,7 @@ export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
-        <span className="px-2 text-sm font-semibold">Acoria — Espace thérapeute</span>
+        <span className="px-2 text-sm font-semibold">Acoria - Espace thérapeute</span>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
