@@ -1,10 +1,11 @@
 version: v1.5.0
 ignore:
-  SNYK-JS-BRACEEXPANSION-1770650:
+  SNYK-JS-ZOD-20510278:
     - '*':
         reason: >
-          Le correctif (5.0.7) est un saut de version majeure incompatible
-          avec minimatch/eslint (casse le build). Dépendance transitive de
-          devDependency (tooling shadcn/ts-morph), non exécutée en
-          production. Risque réel négligeable.
-        expires: 2026-10-01T00:00:00.000Z
+          Aucune version corrigée de zod n'existe à ce jour (toutes versions
+          affectées). La faille ne concerne que les schémas z.array() sans
+          contrainte de longueur ; le projet n'en utilise aucun (schémas
+          objets/chaînes/nombres uniquement). Ajouter .max() à tout futur
+          z.array(). À réévaluer à l'expiration ou dès qu'un correctif sort.
+        expires: 2026-12-31T00:00:00.000Z
