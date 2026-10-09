@@ -1,0 +1,59 @@
+/*
+ * Palette Acoria
+ *
+ * Couleurs de marque brutes + déclinaisons. Les composants n'utilisent pas
+ * ces variables directement : elles alimentent les tokens sémantiques
+ * (--primary, --accent, --sidebar...) définis dans globals.css.
+ *
+ * Règle de contraste : l'orange (#FC883B) n'a que ~2.4:1 sur fond clair.
+ * On l'utilise toujours comme fond avec du texte --carbon-black (8:1),
+ * jamais comme couleur de texte sur fond clair.
+ */
+
+:root {
+  /* Couleurs de marque */
+  --dark-slate-grey: #1c4f4f; /* Bleu  */
+  --azure-mist: #eff9f8; /* Blanc */
+  --pumpkin-spice: #fc883b; /* Orange */
+  --carbon-black: #1c1b1a; /* Noir  */
+
+  /* Déclinaisons du bleu */
+  --dark-slate-grey-900: #133838;
+  --dark-slate-grey-700: #2a6a69;
+  --dark-slate-grey-500: #4f6b6a;
+  --dark-slate-grey-400: #6e9693;
+  --dark-slate-grey-300: #9dc4c1;
+  --dark-slate-grey-200: #c9e2df;
+  --dark-slate-grey-100: #dcefec;
+
+  /* Déclinaisons de l'azure */
+  --azure-mist-200: #e2f0ee;
+  --azure-mist-300: #d3e5e3;
+
+  /* Déclinaisons de l'orange */
+  --pumpkin-spice-600: #e66f1f;
+  --pumpkin-spice-100: #feead9;
+
+  /* Déclinaisons du noir */
+  --carbon-black-800: #252423;
+  --carbon-black-700: #2f2d2b;
+
+  /* Dégradés */
+  --gradient-top: linear-gradient(0deg, var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+  --gradient-right: linear-gradient(90deg, var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+  --gradient-bottom: linear-gradient(180deg, var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+  --gradient-left: linear-gradient(270deg, var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+  --gradient-top-right: linear-gradient(45deg, var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+  --gradient-bottom-right: linear-gradient(135deg, var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+  --gradient-top-left: linear-gradient(225deg, var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+  --gradient-bottom-left: linear-gradient(315deg, var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+  --gradient-radial: radial-gradient(var(--dark-slate-grey), var(--azure-mist), var(--pumpkin-spice), var(--carbon-black));
+}
+
+/* Utilitaires Tailwind : bg-dark-slate-grey, text-pumpkin-spice, border-azure-mist... */
+@theme inline {
+  --color-dark-slate-grey: var(--dark-slate-grey);
+  --color-azure-mist: var(--azure-mist);
+  --color-pumpkin-spice: var(--pumpkin-spice);
+  --color-carbon-black: var(--carbon-black);
+}
