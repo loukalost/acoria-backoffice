@@ -2,10 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, Users } from "lucide-react";
+import {
+  CalendarDays,
+  ClipboardList,
+  LayoutDashboard,
+  Receipt,
+  UserCog,
+  Users,
+} from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -17,8 +25,13 @@ import {
 
 const navItems = [
   { title: "Tableau de bord", url: "/dashboard", icon: LayoutDashboard },
+  { title: "Planning", url: "/planning", icon: CalendarDays },
+  { title: "Séances", url: "/seances", icon: ClipboardList },
   { title: "Patients", url: "/patients", icon: Users },
+  { title: "Facturation", url: "/facturation", icon: Receipt },
 ];
+
+const accountItems = [{ title: "Compte", url: "/compte", icon: UserCog }];
 
 export function AppSidebar() {
   const pathname = usePathname();
@@ -35,7 +48,7 @@ export function AppSidebar() {
             <SidebarMenu>
               {navItems.map((item) => (
                 <SidebarMenuItem key={item.url}>
-                  <SidebarMenuButton asChild isActive={pathname === item.url}>
+                  <SidebarMenuButton asChild isActive={pathname.startsWith(item.url)}>
                     <Link href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
@@ -47,6 +60,20 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          {accountItems.map((item) => (
+            <SidebarMenuItem key={item.url}>
+              <SidebarMenuButton asChild isActive={pathname.startsWith(item.url)}>
+                <Link href={item.url}>
+                  <item.icon />
+                  <span>{item.title}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
