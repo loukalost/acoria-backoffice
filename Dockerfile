@@ -37,6 +37,10 @@ FROM node:${NODE_VERSION} AS runner
 
 WORKDIR /app
 
+# Valeur changeante à chaque build (run id CI) : invalide le cache de la
+# couche apt pour toujours récupérer les derniers correctifs de sécurité.
+ARG APT_CACHE_BUST
+
 RUN apt-get update \
   && apt-get upgrade -y \
   && rm -rf /usr/local/lib/node_modules/npm \

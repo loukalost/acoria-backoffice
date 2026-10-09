@@ -38,6 +38,7 @@ jobs:
           push: true
           build-args: |
             NEXT_PUBLIC_API_URL=${{ vars.NEXT_PUBLIC_API_URL }}
+            APT_CACHE_BUST=${{ github.run_id }}
           tags: ${{ env.registry }}/${{ env.IMAGE_REPOSITORY }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
